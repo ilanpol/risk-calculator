@@ -189,4 +189,32 @@ tr:nth-child(even) {
         margin-bottom: 1rem;
         page-break-inside: avoid;
     }
+}/* סגנונות עבור העלאת תמונת צ'ק */
+.check-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-preview {
+    margin-top: 1rem;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.file-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
 }
