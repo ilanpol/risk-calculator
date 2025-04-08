@@ -45,6 +45,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // קוד לטיפול בהעלאת תמונה והצגתה
+    const checkImageInput = document.getElementById('checkImage');
+    const imagePreview = document.getElementById('checkImagePreview');
+    const previewImg = document.getElementById('previewImg');
+
+    if (checkImageInput) {
+        checkImageInput.addEventListener('change', function(event) {
+            if (event.target.files.length > 0) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    imagePreview.classList.remove('hidden');
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+    
     // פונקציה ראשית לחישוב דירוג סיכון
     function calculateRiskScore() {
         // שליפת ערכים מהטופס
@@ -318,60 +339,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-    }
-    
-    // קוד לטיפול בהעלאת תמונה והצגתה
-    const checkImageInput = document.getElementById('checkImage');
-    const imagePreview = document.getElementById('checkImagePreview');
-    const previewImg = document.getElementById('previewImg');
-    const extractDataBtn = document.getElementById('extractDataBtn');
-
-    if (checkImageInput) {
-        checkImageInput.addEventListener('change', function(event) {
-            if (event.target.files.length > 0) {
-                const file = event.target.files[0];
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    previewImg.src = e.target.result;
-                    imagePreview.classList.remove('hidden');
-                };
-                
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-
-    if (extractDataBtn) {
-        extractDataBtn.addEventListener('click', function() {
-            // כאן יבוא הקוד לחילוץ נתונים מהתמונה
-            // בינתיים, נדמה חילוץ נתונים עם ערכים לדוגמה
-            simulateCheckDataExtraction();
-        });
-    }
-
-    function simulateCheckDataExtraction() {
-        // נתונים לדוגמה שנדמה כאילו חולצו מהתמונה
-        const extractedData = {
-            checkAmount: 42500,
-            checkDate: '2025-06-15',
-            drawerName: 'חברת אלפא תעשיות בע"מ',
-            customerName: 'חברת שירותים פיננסיים בע"מ'
-        };
-        
-        // מילוי הנתונים בטופס
-        document.getElementById('checkAmount').value = extractedData.checkAmount;
-        
-        // המרת תאריך לפורמט המתאים לשדה תאריך ב-HTML
-        const dateParts = extractedData.checkDate.split('-');
-        if (dateParts.length === 3) {
-            document.getElementById('checkDate').value = extractedData.checkDate;
-        }
-        
-        document.getElementById('drawerName').value = extractedData.drawerName;
-        document.getElementById('customerName').value = extractedData.customerName;
-        
-        // הודעה למשתמש
-        alert('הנתונים חולצו בהצלחה מהצ׳ק והוזנו בטופס!');
     }
 });
