@@ -10,7 +10,7 @@
     <div class="container">
         <h1>מחשבון דירוג סיכון</h1>
         
-        <!-- הכנס את החלק הזה כאן -->
+        <!-- תיבת העלאת התמונה - גרסה אחת בלבד -->
         <div class="form-section">
             <h2>העלאת תמונת צ'ק</h2>
             <div class="check-upload-container">
@@ -20,37 +20,6 @@
                 </div>
                 <div id="checkImagePreview" class="image-preview hidden">
                     <img id="previewImg" src="#" alt="תצוגה מקדימה של הצ'ק">
-                </div>
-            </div>
-        </div>
-        <!-- עד כאן -->
-        
-        <form id="riskForm">
-            <div class="form-section">
-                <h2>פרטי לקוח ומושך</h2>
-                <!-- שאר הטופס ממשיך כאן -->
-<html dir="rtl" lang="he">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מחשבון דירוג סיכון</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>מחשבון דירוג סיכון</h1>
-        
-        <!-- תיבת העלאת התמונה -->
-        <div class="form-section">
-            <h2>העלאת תמונת צ'ק</h2>
-            <div class="check-upload-container">
-                <div class="form-group">
-                    <label for="checkImage">העלה תמונת צ'ק:</label>
-                    <input type="file" id="checkImage" accept="image/*" class="file-input">
-                </div>
-                <div id="checkImagePreview" class="image-preview hidden">
-                    <img id="previewImg" src="#" alt="תצוגה מקדימה של הצ'ק">
-                    <button type="button" id="extractDataBtn" class="btn">חלץ נתונים מהצ'ק</button>
                 </div>
             </div>
         </div>
@@ -112,4 +81,101 @@
                 </div>
                 <div class="form-group">
                     <label for="companyAge">שנות ותק:</label>
-                    <input type="number" id="companyAge" min="0"
+                    <input type="number" id="companyAge" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="socioeconomicIndex">מדד סוציואקונומי:</label>
+                    <input type="number" id="socioeconomicIndex" min="1" max="10" value="5">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>נתונים נוספים</h2>
+                <div class="form-group">
+                    <label for="alerts">מספר התרעות:</label>
+                    <input type="number" id="alerts" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="colleagueRecommendation">המלצת קולגות:</label>
+                    <select id="colleagueRecommendation">
+                        <option value="no">לא</option>
+                        <option value="yes">כן</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="drawerGuarantee">ערבות מושך:</label>
+                    <select id="drawerGuarantee">
+                        <option value="no">לא</option>
+                        <option value="yes">כן</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="arrangement">היה הסדר עם המושך:</label>
+                    <select id="arrangement">
+                        <option value="no">לא</option>
+                        <option value="yes">כן</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sameLocation">המושך והלקוח מאותו מיקום:</label>
+                    <select id="sameLocation">
+                        <option value="no">לא</option>
+                        <option value="yes">כן</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ownerOrigin">מהיכן הבעלים (0-10):</label>
+                    <input type="number" id="ownerOrigin" min="0" max="10" value="5">
+                </div>
+            </div>
+            
+            <button type="submit" class="calculate-btn">חשב דירוג סיכון</button>
+        </form>
+        
+        <div id="results" class="hidden">
+            <h2>תוצאות דירוג הסיכון</h2>
+            <div class="score-display">
+                <span id="finalScore">0</span>
+                <span id="scoreGrade">-</span>
+            </div>
+            
+            <div class="details-section">
+                <h3>פירוט מרכיבי הציון</h3>
+                <table id="scoreDetails">
+                    <thead>
+                        <tr>
+                            <th>מרכיב</th>
+                            <th>ערך גולמי</th>
+                            <th>ערך מנורמל</th>
+                            <th>משקל</th>
+                            <th>ציון משוקלל</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoreDetailsBody">
+                        <!-- נתונים יתווספו כאן דרך JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>סה"כ</th>
+                            <td></td>
+                            <td></td>
+                            <td>100%</td>
+                            <td id="totalWeightedScore">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="scoreChart"></canvas>
+            </div>
+            
+            <button id="printBtn" class="print-btn">הדפס דוח</button>
+            <button id="newCalculationBtn" class="btn">חישוב חדש</button>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
