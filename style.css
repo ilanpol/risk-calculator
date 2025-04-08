@@ -189,16 +189,18 @@ tr:nth-child(even) {
         margin-bottom: 1rem;
         page-break-inside: avoid;
     }
-}/* סגנונות עבור העלאת תמונת צ'ק */
+/* סגנונות עבור העלאת תמונת צ'ק */
 .check-upload-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .image-preview {
     margin-top: 1rem;
     max-width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,6 +212,7 @@ tr:nth-child(even) {
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 1rem;
+    display: block;
 }
 
 .file-input {
@@ -217,4 +220,8 @@ tr:nth-child(even) {
     border: 1px solid #ddd;
     border-radius: 4px;
     width: 100%;
+}
+
+.hidden {
+    display: none !important;
 }
