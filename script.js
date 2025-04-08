@@ -45,26 +45,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // קוד לטיפול בהעלאת תמונה והצגתה
-    const checkImageInput = document.getElementById('checkImage');
-    const imagePreview = document.getElementById('checkImagePreview');
-    const previewImg = document.getElementById('previewImg');
+// קוד לטיפול בהעלאת תמונה והצגתה
+const checkImageInput = document.getElementById('checkImage');
+const imagePreview = document.getElementById('checkImagePreview');
+const previewImg = document.getElementById('previewImg');
 
-    if (checkImageInput) {
-        checkImageInput.addEventListener('change', function(event) {
-            if (event.target.files.length > 0) {
-                const file = event.target.files[0];
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    previewImg.src = e.target.result;
-                    imagePreview.classList.remove('hidden');
-                };
-                
-                reader.readAsDataURL(file);
-            }
-        });
-    }
+if (checkImageInput) {
+    checkImageInput.addEventListener('change', function(event) {
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                imagePreview.classList.remove('hidden');
+            };
+            
+            reader.readAsDataURL(file);
+        }
+    });
+}
     
     // פונקציה ראשית לחישוב דירוג סיכון
     function calculateRiskScore() {
